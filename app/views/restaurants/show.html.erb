@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1><%= @restaurant.name %></h1>
+      <p>
+        <strong>Address:</strong>
+        <%= @restaurant.address %>
+      </p>
+      <p>
+        <strong>Phone:</strong>
+        <%= @restaurant.phone_number %>
+      </p>
+      <p>
+        <strong>Category:</strong>
+        <%= @restaurant.category %>
+      </p>
+      <div>
+        <p><strong>Reviews:</strong></p>
+        <% @restaurant.reviews.each do |review| %>
+          <p><%= review.content %></p>
+          <p class="star"><%= "★" * review.rating + "☆" * (5 - review.rating) %></p>
+        <% end %>
+      </div>
+      <h1>Leave a review</h1>
+        <%= render '/reviews/form', review: @review %>
+      <hr>
+      <%= link_to 'Back', restaurants_path %>
+    </div>
+  </div>
+</div>
